@@ -10,20 +10,21 @@ from kivy.uix.progressbar import ProgressBar
 
 # importing Custom Modules
 
-from mainpdf import getPDFText
-from mainpdf import split_pdf
-from jnius import autoclass
+from pdfparsing import read_pdf
+from pdfparsing import split_pdf
+
+#from jnius import autoclass
 
 # Using Pyjnius for wrapping around Java Classes
 
-Locale = autoclass('java.util.Locale')
-PythonActivity = autoclass('org.renpy.android.PythonActivity')
-TextToSpeech = autoclass('android.speech.tts.TextToSpeech')
-tts = TextToSpeech(PythonActivity.mActivity, None)
+#Locale = autoclass('java.util.Locale')
+#PythonActivity = autoclass('org.renpy.android.PythonActivity')
+#TextToSpeech = autoclass('android.speech.tts.TextToSpeech')
+#tts = TextToSpeech(PythonActivity.mActivity, None)
 
 # right now only English-US language is supported
 
-tts.setLanguage(Locale.US)
+#tts.setLanguage(Locale.US)
 
 
 
@@ -68,23 +69,31 @@ class Root(FloatLayout):
         #VVVVvvvvvvvVVVVvvvvvvVVVVvVVV
         
         # defineatly need new pdf reader. may be can create pdf reader using PDF mine for android but it is really slow.
-        for i in split_pdf(getPDFText(filename[0]),20000):
-			
-            
+        
+		for i in split_pdf(read_pdf(filename[0]),20000):
+                    
+        #            tts.synthesizeToFile(i,None,'/sdcard/'+i[0]+'.ogg') 
+				    
+				    self.text_input.text = 'your pdf has been converted :)' 
+
+                self.dismiss_popup()
+
+
+
+
             # here we have to create Option by user to choose location to save file         
           
           # may be we need write to system permission?
           
-            tts.synthesizeToFile(i,None,'/sdcard/'+i[0]+'.ogg')
+            #
 
         # Self.text_input.text has the valuse of show the text on the screen 
        
-        self.text_input.text = 'your pdf has been converted :) '
+            
         
        # we used POP-up to "load file" now we are destroying it.
         
-        self.dismiss_popup()
-
+        
 
 
 class Editor(App):
