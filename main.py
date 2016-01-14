@@ -60,23 +60,12 @@ class Root(FloatLayout):
 
     def load(self, path,filename):
    # filename):
-   
-   # ethe file nu as a stream use kar rahe haan , matlab jo file de content ne
-   # oh stream vich aa rahe ne.
-   
-        
-        # we need progress bar here:
-        #VVVVvvvvvvvVVVVvvvvvvVVVVvVVV
-        
-        # defineatly need new pdf reader. may be can create pdf reader using PDF mine for android but it is really slow.
-        
-		for i in split_pdf(read_pdf(filename[0]),20000):
-                    
-        #            tts.synthesizeToFile(i,None,'/sdcard/'+i[0]+'.ogg') 
-				    
-				    self.text_input.text = 'your pdf has been converted :)' 
+       
+        i = read_pdf(filename[0])
+                    		    
+        self.text_input.text = 'your pdf has been converted :)'+i
 
-                self.dismiss_popup()
+        self.dismiss_popup()
 
 
 
