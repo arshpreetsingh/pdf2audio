@@ -11,7 +11,7 @@ from kivy.uix.progressbar import ProgressBar
 
 from pdfparsing import read_pdf
 from pdfparsing import split_pdf
-'''
+
 from jnius import autoclass
 
 # Using Pyjnius for wrapping around Java Classes
@@ -26,14 +26,6 @@ tts = TextToSpeech(PythonActivity.mActivity, None)
 # right now only English-US language is supported
 
 tts.setLanguage(Locale.US)
-
-'''
-
-class myPB(ProgressBar):
-    def __init__(self, **kwargs):
-        super(myPB, self).__init__(**kwargs)
-       
-        print '\n\n TEST PB CREATED \n\n'
 
 class LoadDialog(FloatLayout):
     load = ObjectProperty(None)
@@ -50,7 +42,6 @@ class Root(FloatLayout):
     loadfile = ObjectProperty(None)
     savefile = ObjectProperty(None)
     text_input = ObjectProperty(None)
-    progress_bar = ObjectProperty(None)
         
 
     def dismiss_popup(self):
@@ -66,33 +57,15 @@ class Root(FloatLayout):
 # very important function to display  list of files from file system
 
     def load(self, path,filename):
-   # filename):
         
         for i in read_pdf(filename[0]):
 			
             for j in split_pdf(i,2000):
-#                tts.synthesizeToFile(j,None,'/sdcard1/backup/test'+i[0]+'.ogg')
-                 j==m     
-        self.text_input.text = m
+                tts.synthesizeToFile(j,None,'/sdcard0/backup/test'+i[0]+'.ogg')
+           
+        self.text_input.text = 'done'
 
         self.dismiss_popup()
-
-
-
-
-            # here we have to create Option by user to choose location to save file         
-          
-          # may be we need write to system permission?
-          
-            #
-
-        # Self.text_input.text has the valuse of show the text on the screen 
-       
-            
-        
-       # we used POP-up to "load file" now we are destroying it.
-        
-        
 
 
 class Editor(App):

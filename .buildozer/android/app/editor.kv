@@ -1,4 +1,3 @@
-
 Root:
 
     text_input: text_input
@@ -19,26 +18,14 @@ Root:
                 id: text_input
                 text: ''
 
-        ProgressBar:
-            id: pb
-            max: 1000
-            value: 200
 
-
-<myPB>:
-    value: 400
-    max: 500
-    canvas:
-        Rectangle:
-            source: "kapy-bg.jpg"
-            size: self.size
-            pos: self.pos
 
 <LoadDialog>:
     BoxLayout:
-        size: root.size
+        size: root.size/2
         pos: root.pos
         orientation: "vertical"
+        
         FileChooserListView:
             id: filechooser
 
