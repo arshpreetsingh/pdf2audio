@@ -1,0 +1,6 @@
+Ok now first thing do I need 
+android.permissions = INTERNET,writetowfile permissoins, I think I need that, App defineatly need that permission
+
+Ok after that you defineatly need to ask on Kivy mailing list about all this stuff
+
+
